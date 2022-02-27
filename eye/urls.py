@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import log_session
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('log-session', log_session, name="log_session")
 ]

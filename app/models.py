@@ -6,14 +6,16 @@ class Application(models.Model):
 class EventSession(models.Model):
     session_id = models.CharField(max_length=100)
 
-class EventCategory(models.IntegerChoices):
-    PAGE_INTERACTION = 0, 'page interaction'
-    FORM_INTERACTION = 1, 'form interaction'
 
 class Event(models.Model):
-    application = models.ForeignKey(Application)
-    session = models.ForeignKey(EventSession)
-    category = models.IntegerChoices(choices=EventCategory.choices)
+
+    class EventCategory(models.IntegerChoices):
+        PAGE_INTERACTION = 0
+        FORM_INTERACTION = 1
+
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
+    session = models.ForeignKey(EventSession, on_delete=models.CASCADE)
+    category = models.IntegerField(choices=EventCategory.choices)
     payload = models.JSONField()
     timestamp = models.DateTimeField()
 

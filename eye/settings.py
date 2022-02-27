@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*'] # In production it should be the list of applications
 # Application definition
 
 INSTALLED_APPS = [
+    'app.apps.AppConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
