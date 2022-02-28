@@ -15,6 +15,7 @@ class Event(models.Model):
 
     application = models.ForeignKey(Application, on_delete=models.CASCADE)
     session = models.ForeignKey(EventSession, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
     category = models.IntegerField(choices=EventCategory.choices)
     payload = models.JSONField()
     timestamp = models.DateTimeField()
